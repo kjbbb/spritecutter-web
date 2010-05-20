@@ -1,0 +1,13 @@
+#container {width:700px;margin-left:auto;margin-right:auto;}
+#menu {font-weight:bold;}
+#menu a {text-decoration:none;color:black;padding-bottom:8px;}
+#menu ul {width:100%;display: inline;margin:0px 0px 0px 0px;padding:0px;}
+#menu ul li {display:inline;margin:0px 50px 0px 0px;padding:0px 0px 5px 0px;border-bottom:3px solid #a3a3a3;}
+#menu ul li:hover {border-bottom:3px solid black;}
+#menu .active {border-bottom:3px solid #E88C4A;}
+body {font-family: "Times New Roma", Georgia, Serif;}
+p {font-size:12px;}
+.gray {color:#A3A3A3;}
+#content {margin: 20px 0px 20px 0px;padding: 5px}
+#footer {margin:20px 0px 0px 0px;padding: 5px;}
+#content a {color:#E88C4A;}

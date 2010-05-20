@@ -1,0 +1,27 @@
+Dependencies
+    OpenCV
+
+    On ubuntu:
+    sudo apt-get install libcv1 libcvaux libcvhighgui
+
+building cgi binary:
+    in the spritecutter-web/cgi-bin/spritecutter/ folder, run make
+
+creating server:
+    1. Configure the server - usually this involves creating a virtual host (apache config: extra/httpd-vhosts.conf)
+        point the vhost document root to the spritecutter-web/htdocs/ folder
+
+        ServerName spritecutterdev.com
+        DocumentRoot "/var/http/spritecutter-web/htdocs"
+
+    2. Add line to /etc/hosts file (usually necessary if using vhost):
+        e.g. ####
+        127.0.0.1   spritecutterdev.com 
+    
+    3. modify permissions to reflect current server config. Apache or lighttpd usually run under user "http".
+        e.g. chmod -R 755 spritecutter-web/
+    
+    4. the spritecutter-web/htdocs/uploads/ directory needs to be read and written by the php and the server. Usually user "http"
+        e.g. chown http spritecutter-web/htdocs/uploads/
+
+After the server is started, the program should now be set up to cut mad sprites

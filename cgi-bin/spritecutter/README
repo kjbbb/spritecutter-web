@@ -1,0 +1,25 @@
+Dependencies:
+    OpenCV development headers and libraries (http://opencv.willowgarage.com/wiki/)
+
+Compiling:
+    make
+
+Usage:
+    Options:
+        -o: Specify output directory. Default is "."
+        -p: Specify output image prefix. Default is "spr_"
+        -f: Specify output image format. Default is "png"
+
+    Arguments:
+        image file
+
+    Example:
+        ./spritecutter images/dbz.png -o ./output/ -p spr_        
+        or
+        ./spritecutter <image>
+
+Thanks to:
+    OpenCV for the image framework
+        http://opencv.willowgarage.com/wiki/)
+    CvBlob for the blob extraction algorithm and interface
+        http://code.google.com/p/cvblob/
