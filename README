@@ -5,23 +5,47 @@ Dependencies
     sudo apt-get install libcv1 libcvaux libcvhighgui
 
 building cgi binary:
-    in the spritecutter-web/cgi-bin/spritecutter/ folder, run make
+    In the spritecutter-web/cgi-bin/spritecutter/ folder, run make. 
+    It should compile cleanly provided that the dependencies are intact.
+
+testing cgi binary:
+    cd spritecutter-web/cgi-bin/
+    ./spritecutter <input image> -o <output directory> -p<filename prefix>
+
+    If it runs correctly, you should see the specified directory with the cut sprite, 
+    and xml vector file. 
 
 creating server:
-    1. Configure the server - usually this involves creating a virtual host (apache config: extra/httpd-vhosts.conf)
-        point the vhost document root to the spritecutter-web/htdocs/ folder
+    1.  Configure the server - usually this involves creating a virtual host 
 
-        ServerName spritecutterdev.com
-        DocumentRoot "/var/http/spritecutter-web/htdocs"
+        Lighttpd config example:
 
-    2. Add line to /etc/hosts file (usually necessary if using vhost):
+        $HTTP["host"] == "spritecutterdev.com"  {
+            server.document-root = "/var/www/spritecutter-web/htdocs/"
+            server.server-root = "/var/www/spritecutter-web/"
+        }
+
+        Apache example:
+
+        <VirtualHost *:80>
+            ServerName kjb.homeunix.com
+            DocumentRoot "/var/www/spritecutter-web/htdocs"
+            RewriteEngine on
+            <Directory "/">
+                Options MultiViews -Indexes FollowSymLinks SymLinksIfOwnerMatch IncludesNoExec
+            </Directory>
+        </VirtualHost>
+
+    2.  If testing locally, add line to /etc/hosts file (usually necessary if using vhost):
         e.g. ####
         127.0.0.1   spritecutterdev.com 
     
-    3. modify permissions to reflect current server config. Apache or lighttpd usually run under user "http".
+    3.  modify permissions to reflect current server config. Apache or lighttpd usually run under 
+        user "http".
         e.g. chmod -R 755 spritecutter-web/
     
-    4. the spritecutter-web/htdocs/uploads/ directory needs to be read and written by the php and the server. Usually user "http"
-        e.g. chown http spritecutter-web/htdocs/uploads/
+    4.  the spritecutter-web/htdocs/uploads/ directory needs to be read and written by the php and the 
+        server. Usually user "http"
+        e.g. chown http:http spritecutter-web/htdocs/uploads/
 
 After the server is started, the program should now be set up to cut mad sprites
